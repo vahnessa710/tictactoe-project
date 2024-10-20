@@ -1,0 +1,74 @@
+
+#container {
+    width: 100%;
+}
+
+#title {
+    text-align: center;
+    margin-top: 0;
+    font-size: 40px;
+    color: rgb(161, 1, 1);
+    font-weight: 700;
+}
+
+#board {
+    background-color: rgba(247, 247, 247, 0.418);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 5px;
+    width: 313px;
+    height: 313px;
+    margin: auto;
+    padding: 20px;
+    border-radius: 10px;
+
+}
+
+.tictactoeBox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 99px;
+    height: 99px;
+    background-color: rgba(255, 255, 255, 0.479);
+    border: 2px solid #ccc;
+    font-family: "Comfortaa", sans-serif;
+    font-size: 45px;
+    font-weight: 700;
+    border-radius: 10px;
+}
+
+#buttons{
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    font-family: "Comfortaa", sans-serif;
+    font-size: 20px;
+    color: antiquewhite;
+}
+
+#previous, #next, #reset {
+    background-color: rgb(168, 6, 6);
+    padding: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+    border-radius: 10px;
+    /* display: none; */
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    box-sizing: border-box;
+    font-family: "Comfortaa", sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-image 1s ease;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url("https://wallpapers-clan.com/wp-content/uploads/2024/04/cute-pikachu-yellow-desktop-wallpaper-preview.jpg");
+}
