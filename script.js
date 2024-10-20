@@ -44,41 +44,47 @@ function addMove(element, boxNumber){
     checkWinner();
 }
 
-// render
+
 function updateBoard(element, boxNumber){
     let row = Math.floor(boxNumber/3);
     let column = boxNumber%3;
-    gameBoard[row][column] = element.innerText; // correct spot on the gameBoard array = X or O; 
+    gameBoard[row][column] = element.innerText; // coordinate = innertext = X or O;
     updateState(gameBoard); // to save the current state of the board
 }
 
 // history; copy of the game
-
+// adding value to state[] and currentStateIndex
 function updateState(boardCopy) {
-    const newBoard = []; // a new array that will hold the copy of the current gameBoard;
-    for(let i = 0; i < boardCopy.length; i++){ // loop through the outer array [3]
+    const newBoard = []; // this will hold the copy of the gameBoard;
+    for(let i = 0; i < boardCopy.length; i++){ // row
         const row = [];
-        for(let j = 0; j < boardCopy[i].length; j++){ // loop through the indices of the gameBoard
+        for(let j = 0; j < boardCopy[i].length; j++){ // column
             row.push(boardCopy[i][j]);
         } // closes the inner for loop
         newBoard.push(row);
         currentStateIndex = state.length;
     } //closes the outer for loop
-    state.push(newBoard); // adds this copy to history[];
+    state.push(newBoard); // adds the copy to state[];
 };
 
+// render 
 function reflectBoard(index){
-    let tempBoard = state[index];
-    let moveString = [];
-    for(let i = 0; i < tempBoard.length; i++){
-        for(let j = 0; j < tempBoard[i].length; j++){
-            moveString.push(tempBoard[i][j]);
+    let tempBoard = state[index]; // this will hold the state[currentStateIndex];
+    let moveString = []; // array that will store the individual elements of tempBoard;
+    console.log(`state[index]= ${state[index]}`);
+    console.log(`index = ${index}`)
+    console.log(`state index = ${state[index]}`);
+    console.log(`tempBoard = ${tempBoard}`)
+    
+    for(let i = 0; i < tempBoard.length; i++){ // row iteration
+        for(let j = 0; j < tempBoard[i].length; j++){ // column iteration
+            moveString.push(tempBoard[i][j]); // pushing the element into the moveString array; flattens the 2D array tempBoard into a 1D array moveString 
+            console.log(`moveString = ${moveString}`)
         }
     }
     for(let grid = 0; grid < moveString.length; grid++){
         document.getElementById(`box${grid}`).textContent = moveString[grid];
-    }
-
+    } // display on grid
 }
 
 previousButton.addEventListener("click", () => {
@@ -101,7 +107,7 @@ resetButton.onclick = () => {
      };
     gameBoard = [ ['', '', ''], ['', '', ''], ['', '', ''] ]; // reset the array;
     playerTurn1 = true; // player x active; 
-    gameEnded = false; // start the game again;
+    gameEnded = false; // to add move
     title.textContent = "TicTacToe";
 };
 
