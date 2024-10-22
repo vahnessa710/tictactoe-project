@@ -113,7 +113,7 @@ resetButton.onclick = () => {
     gameBoard = [ ['', '', ''], ['', '', ''], ['', '', ''] ];
     playerTurn1 = true;  
     gameEnded = false; // to add move
-    title.textContent = "TicTacToe";
+    title.textContent = "Pikachu's TicTacToe";
     previousButton.style.display = "none";
     nextButton.style.display = "none";
 };
@@ -125,7 +125,7 @@ function checkWinner() {
     for(let i = 0; i < gameBoard.length; i++){
         // row checker
         if(gameBoard[i][0] !== "" && gameBoard[i][0] === gameBoard[i][1] && gameBoard[i][1] === gameBoard[i][2]){
-            title.innerHTML = `${gameBoard[i][0]} wins!`
+            displayImg(gameBoard[i][0]);
             document.getElementsByClassName("pokemon-icon").width = "20px";
             gameEnded = true;
             previousButton.style.display = "block";
@@ -135,7 +135,7 @@ function checkWinner() {
 
         //column checker
         if(gameBoard[0][i] !== "" && gameBoard[0][i] === gameBoard[1][i] && gameBoard[1][i] === gameBoard[2][i]){
-            title.innerHTML = `${gameBoard[0][i]} wins!`
+            displayImg(gameBoard[0][i]);
             gameEnded = true;
             previousButton.style.display = "block";
             nextButton.style.display = "block";
@@ -144,8 +144,7 @@ function checkWinner() {
 
         // diagonal checker
         if(gameBoard[0][0] !== "" && gameBoard[0][0] === gameBoard[1][1] && gameBoard[1][1] === gameBoard[2][2]){
-            console.log("diagonal 1")
-            title.innerHTML = `${gameBoard[0][0]} wins!`
+            displayImg(gameBoard[0][0]);
             gameEnded = true;
             previousButton.style.display = "block";
             nextButton.style.display = "block";
@@ -153,8 +152,7 @@ function checkWinner() {
             };
 
         if(gameBoard[0][2] !== "" && gameBoard[0][2] === gameBoard[1][1] && gameBoard[1][1] === gameBoard[2][0]){
-                console.log("diagonal 2")
-                title.innerHTML = `${gameBoard[0][2]} wins!`
+                displayImg(gameBoard[0][2]);
                 gameEnded = true;
                 previousButton.style.display = "block";
                 nextButton.style.display = "block";
@@ -181,5 +179,11 @@ function checkWinner() {
 
 } // closes function checkWinner()
 
+function displayImg(image) {
+    const imgContainer = document.getElementById("img-container");
+    imgContainer.innerHTML = image;
+    title.style.display = "none";
+    document.getElementById("wins").style.display = "inline-block";
+}
 
 createBoard();

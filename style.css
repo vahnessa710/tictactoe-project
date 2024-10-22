@@ -1,22 +1,24 @@
-
 #container {
     width: 100%;
+    padding: 30px;
+    text-align: center;
 }
 
+html {
+    overflow: hidden;
+}
 body{
     margin: 0;
     padding: 0;
     height: 100vh;
     box-sizing: border-box;
     font-family: "Comfortaa", sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     transition: background-image 1s ease;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    background-image: url("https://wallpapers-clan.com/wp-content/uploads/2024/04/cute-pikachu-yellow-desktop-wallpaper-preview.jpg");
+    /* background-image: url("https://wallpapers-clan.com/wp-content/uploads/2024/04/cute-pikachu-yellow-desktop-wallpaper-preview.jpg"); */
+    background-image: url("https://images2.alphacoders.com/723/thumb-1920-723263.jpg");
 }
 
 #title {
@@ -35,11 +37,10 @@ body{
     gap: 15px;
     width: 300px;
     height: 300px;
-    margin: auto;
+    margin: 10px auto auto auto;
     padding: 20px;
     padding-left: 18px;
     border-radius: 10px;
-
 }
 
 .tictactoeBox {
@@ -57,9 +58,10 @@ body{
 }
 
 #buttons{
-    margin-top: 10px;
+    margin-top: 20px;
     display: flex;
     justify-content: center;
+    align-items: center;
     gap: 50px;
     font-family: "Comfortaa", sans-serif;
     font-size: 20px;
@@ -72,7 +74,6 @@ body{
     padding-left: 15px;
     padding-right: 15px;
     border-radius: 10px;
-    
 }
 
 #previous, #next {
@@ -84,5 +85,20 @@ body{
     width: 95px;
     height: auto;
     border-radius: 10px;
+}    
 
+
+#wins {
+    display: none;
+    margin-top: 0;
+    margin-left: 10px;
+    font-size: 40px;
+    color: rgb(161, 1, 1);
+    font-weight: 700;
+    padding-top: 15px;
+    vertical-align: middle;
+}
+
+#img-container{
+    vertical-align: middle;
 }
