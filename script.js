@@ -12,7 +12,12 @@ let state = []; // move history
 let currentStateIndex = 0;
 const tictactoeBox = document.getElementsByClassName("tictactoeBox");
 let title = document.getElementById("title"); // tictactoe text
+let winner = document.getElementById("winner")
+let announce = document.getElementById("announce"); //
 let gameEnded = false;
+
+const xImage = "https://banner2.cleanpng.com/20240210/tig/transparent-pikachu-happy-and-surprised-pikachu-with-cute-1710881345265.webp";
+const oImage = "https://w7.pngwing.com/pngs/952/176/png-transparent-pokemon-pokeball-illustration-drawing-pokemon-pokeball-angle-image-file-formats-pokemon.png";
 
 function createBoard(){
     for(let i = 0; i < 9; i++){
@@ -31,12 +36,12 @@ function createBoard(){
 
 function addMove(element, boxNumber){ 
     let specificGrid = document.getElementById(element);
-    if(!specificGrid.textContent){ // if grid is empty
+    if(!specificGrid.innerHTML){ // if grid is empty
         if(playerTurn1){
-            specificGrid.textContent = "X";
+            specificGrid.innerHTML = `<img src="${xImage}" alt = "X" class ="pokemon-icon">`
             playerTurn1 = false;
         } else {
-            specificGrid.textContent = "O";
+            specificGrid.innerHTML = `<img src="${oImage}" alt = "O" class ="pokemon-icon">`
             playerTurn1 = true;
         }
     }
@@ -44,12 +49,11 @@ function addMove(element, boxNumber){
     checkWinner();
 }
 
-
-function updateBoard(element, boxNumber){
+function updateBoard(element, boxNumber){ // updates the gameboard array
     let row = Math.floor(boxNumber/3);
     let column = boxNumber%3;
-    gameBoard[row][column] = element.innerText; // coordinate = innertext = X or O;
-    updateState(gameBoard); // to save the current state of the board
+    gameBoard[row][column] = element.innerHTML; // coordinate = innertext = X or O;
+    updateState(gameBoard); // to save the current state of the board;
 }
 
 // history; copy of the game
@@ -71,6 +75,7 @@ function updateState(boardCopy) {
 function reflectBoard(index){
     let tempBoard = state[index]; // this will hold the state[currentStateIndex];
     let moveString = []; // array that will store the individual elements of tempBoard;
+    
     console.log(`state[index]= ${state[index]}`);
     console.log(`index = ${index}`)
     console.log(`state index = ${state[index]}`);
@@ -78,7 +83,7 @@ function reflectBoard(index){
     
     for(let i = 0; i < tempBoard.length; i++){ // row iteration
         for(let j = 0; j < tempBoard[i].length; j++){ // column iteration
-            moveString.push(tempBoard[i][j]); // pushing the element into the moveString array; flattens the 2D array tempBoard into a 1D array moveString 
+            moveString.push(tempBoard[i][j]); // push all elements of tempBoard to moveString array;
             console.log(`moveString = ${moveString}`)
         }
     }
@@ -105,10 +110,12 @@ resetButton.onclick = () => {
     for(let box of tictactoeBox){
         box.textContent = "";  // clear the boxes;
      };
-    gameBoard = [ ['', '', ''], ['', '', ''], ['', '', ''] ]; // reset the array;
-    playerTurn1 = true; // player x active; 
+    gameBoard = [ ['', '', ''], ['', '', ''], ['', '', ''] ];
+    playerTurn1 = true;  
     gameEnded = false; // to add move
     title.textContent = "TicTacToe";
+    previousButton.style.display = "none";
+    nextButton.style.display = "none";
 };
 
 // checking the winner && alert
@@ -118,30 +125,39 @@ function checkWinner() {
     for(let i = 0; i < gameBoard.length; i++){
         // row checker
         if(gameBoard[i][0] !== "" && gameBoard[i][0] === gameBoard[i][1] && gameBoard[i][1] === gameBoard[i][2]){
-            title.textContent = `${gameBoard[i][0]} wins!`
+            title.innerHTML = `${gameBoard[i][0]} wins!`
+            document.getElementsByClassName("pokemon-icon").width = "20px";
             gameEnded = true;
+            previousButton.style.display = "block";
+            nextButton.style.display = "block";
             return;
         };
 
         //column checker
         if(gameBoard[0][i] !== "" && gameBoard[0][i] === gameBoard[1][i] && gameBoard[1][i] === gameBoard[2][i]){
-            title.textContent = `${gameBoard[0][i]} wins!`
+            title.innerHTML = `${gameBoard[0][i]} wins!`
             gameEnded = true;
+            previousButton.style.display = "block";
+            nextButton.style.display = "block";
             return; 
             };
 
         // diagonal checker
         if(gameBoard[0][0] !== "" && gameBoard[0][0] === gameBoard[1][1] && gameBoard[1][1] === gameBoard[2][2]){
             console.log("diagonal 1")
-            title.textContent = `${gameBoard[0][0]} wins!`
+            title.innerHTML = `${gameBoard[0][0]} wins!`
             gameEnded = true;
+            previousButton.style.display = "block";
+            nextButton.style.display = "block";
             return; 
             };
 
         if(gameBoard[0][2] !== "" && gameBoard[0][2] === gameBoard[1][1] && gameBoard[1][1] === gameBoard[2][0]){
                 console.log("diagonal 2")
-                title.textContent = `${gameBoard[0][2]} wins!`
+                title.innerHTML = `${gameBoard[0][2]} wins!`
                 gameEnded = true;
+                previousButton.style.display = "block";
+                nextButton.style.display = "block";
                 return;
                 };
 
@@ -157,11 +173,12 @@ function checkWinner() {
 
         if(allBoxesMarked){ // if it is true or NOT empty
             title.textContent = `It's a tie!` // then its a tie
+            previousButton.style.display = "block";
+            nextButton.style.display = "block";
             gameEnded = true;
         }
-            
     }// closes for Inner Loop
-       
+
 } // closes function checkWinner()
 
 

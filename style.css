@@ -3,60 +3,6 @@
     width: 100%;
 }
 
-#title {
-    text-align: center;
-    margin-top: 0;
-    font-size: 40px;
-    color: rgb(161, 1, 1);
-    font-weight: 700;
-}
-
-#board {
-    background-color: rgba(92, 71, 1, 0.26);
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 5px;
-    width: 313px;
-    height: 313px;
-    margin: auto;
-    padding: 20px;
-    border-radius: 10px;
-
-}
-
-.tictactoeBox {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 99px;
-    height: 99px;
-    background-color: rgba(255, 255, 255, 0.61);
-    border: 2px solid #cccccc15;
-    font-family: "Comfortaa", sans-serif;
-    font-size: 45px;
-    font-weight: 700;
-    border-radius: 10px;
-}
-
-#buttons{
-    margin-top: 40px;
-    display: flex;
-    justify-content: center;
-    gap: 50px;
-    font-family: "Comfortaa", sans-serif;
-    font-size: 20px;
-    color: antiquewhite;
-}
-
-#previous, #next, #reset {
-    background-color: rgb(168, 6, 6);
-    padding: 10px;
-    padding-left: 15px;
-    padding-right: 15px;
-    border-radius: 10px;
-    /* display: none; */
-}
-
 body{
     margin: 0;
     padding: 0;
@@ -71,4 +17,72 @@ body{
     background-position: center;
     background-repeat: no-repeat;
     background-image: url("https://wallpapers-clan.com/wp-content/uploads/2024/04/cute-pikachu-yellow-desktop-wallpaper-preview.jpg");
+}
+
+#title {
+    text-align: center;
+    margin-top: 0;
+    font-size: 40px;
+    color: rgb(161, 1, 1);
+    font-weight: 700;
+    padding-top: 15px;
+}
+
+#board {
+    background-color: rgba(92, 71, 1, 0.26);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    width: 300px;
+    height: 300px;
+    margin: auto;
+    padding: 20px;
+    padding-left: 18px;
+    border-radius: 10px;
+
+}
+
+.tictactoeBox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 88px;
+    height: 88px;
+    background-color: rgba(255, 255, 255, 0.342);
+    border: 2px solid #cccccc15;
+    font-family: VT323;
+    font-size: 3em;
+    font-weight: 700;
+    border-radius: 10px;
+}
+
+#buttons{
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    font-family: "Comfortaa", sans-serif;
+    font-size: 20px;
+    color: antiquewhite;
+}
+
+#previous, #next, #reset {
+    background-color: rgb(168, 6, 6);
+    padding: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+    border-radius: 10px;
+    
+}
+
+#previous, #next {
+    display: none;
+}
+
+
+.pokemon-icon {
+    width: 95px;
+    height: auto;
+    border-radius: 10px;
+
 }
