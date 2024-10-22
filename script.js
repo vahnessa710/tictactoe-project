@@ -88,7 +88,7 @@ function reflectBoard(index){
         }
     }
     for(let grid = 0; grid < moveString.length; grid++){
-        document.getElementById(`box${grid}`).textContent = moveString[grid];
+        document.getElementById(`box${grid}`).innerHTML = moveString[grid];
     } // display on grid
 }
 
