@@ -12,19 +12,20 @@ let state = []; // move history
 let currentStateIndex = 0;
 const tictactoeBox = document.getElementsByClassName("tictactoeBox");
 let title = document.getElementById("title"); // tictactoe text
-let winner = document.getElementById("winner")
-let announce = document.getElementById("announce"); //
 let gameEnded = false;
-
 const xImage = "https://banner2.cleanpng.com/20240210/tig/transparent-pikachu-happy-and-surprised-pikachu-with-cute-1710881345265.webp";
 const oImage = "https://w7.pngwing.com/pngs/952/176/png-transparent-pokemon-pokeball-illustration-drawing-pokemon-pokeball-angle-image-file-formats-pokemon.png";
 
 function createBoard(){
+    board.innerHTML = "";
+    imgContainer.style.display = "none";
+    wins.style.display = "none";
     for(let i = 0; i < 9; i++){
         let tictactoeGrid = document.createElement("div");
         tictactoeGrid.className ="tictactoeBox";
         let gridId = `box${i}`;
         tictactoeGrid.setAttribute("id", gridId);
+        title.innerText = "Pikachu's TicTacToe";
         board.appendChild(tictactoeGrid);
         tictactoeGrid.addEventListener("click", () => {
             if(!gameEnded){
@@ -108,14 +109,19 @@ nextButton.addEventListener("click", () => {
 
 resetButton.onclick = () => {
     for(let box of tictactoeBox){
-        box.textContent = "";  // clear the boxes;
+        box.innerHTML = "";  // clear the boxes;
      };
     gameBoard = [ ['', '', ''], ['', '', ''], ['', '', ''] ];
     playerTurn1 = true;  
     gameEnded = false; // to add move
-    title.textContent = "Pikachu's TicTacToe";
     previousButton.style.display = "none";
     nextButton.style.display = "none";
+    document.getElementById("img-container").style.display = "none";
+    document.getElementById("wins").style.display = "none";
+    title.style.display = "block";
+    currentStateIndex = 0; // Reset history index
+    state = []; // Clear move history
+    createBoard();
 };
 
 // checking the winner && alert
@@ -126,7 +132,6 @@ function checkWinner() {
         // row checker
         if(gameBoard[i][0] !== "" && gameBoard[i][0] === gameBoard[i][1] && gameBoard[i][1] === gameBoard[i][2]){
             displayImg(gameBoard[i][0]);
-            document.getElementsByClassName("pokemon-icon").width = "20px";
             gameEnded = true;
             previousButton.style.display = "block";
             nextButton.style.display = "block";
@@ -179,11 +184,15 @@ function checkWinner() {
 
 } // closes function checkWinner()
 
+let imgContainer = document.getElementById("img-container");
+let wins = document.getElementById("wins");
 function displayImg(image) {
-    const imgContainer = document.getElementById("img-container");
+    imgContainer.style.display = "inline-block";
     imgContainer.innerHTML = image;
     title.style.display = "none";
-    document.getElementById("wins").style.display = "inline-block";
+    wins.style.display = "inline-block";
+    wins.innerText = "wins!";
+    return;
 }
 
 createBoard();
