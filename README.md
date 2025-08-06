@@ -1,2 +1,2 @@
 <img width="1360" height="633" alt="screencapture-file-C-Users-rk-ba-OneDrive-Desktop-Avion-tictactoe-project-index-html-2025-08-07-02_17_41" src="https://github.com/user-attachments/assets/0c063810-5b86-41a6-8e09-ab743c74ab78" />
-![Uploading screencapture-file-C-Users-rk-ba-OneDrive-Desktop-Avion-tictactoe-project-index-html-2025-08-07-02_17_30.png…]()
+<img width="1363" height="633" alt="screencapture-file-C-Users-rk-ba-OneDrive-Desktop-Avion-tictactoe-project-index-html-2025-08-07-02_17_30" src="https://github.com/user-attachments/assets/6eb99ca3-ca53-440d-8a1f-84897dbbd2ea" />
